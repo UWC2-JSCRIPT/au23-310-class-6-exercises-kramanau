@@ -8,8 +8,11 @@ $(document).ready(function(){
 /**
  * Delete element when delete link clicked
  */
-  $('.delete').on('click', function(e){
-    $(this).parent().remove();
+  $('.delete').on('click', async function(e){
+    e.stopPropagation();
+    $(this).parent().fadeOut(function(){
+      $(this).remove();
+    });
   });
 
 /**
@@ -30,7 +33,10 @@ const addListItem = function(e) {
   delButton.text('Delete');
   delButton.addClass('delete');
   delButton.on('click', function(e){
-    $(this).parent().remove();
+    e.stopPropagation();
+    $(this).parent().fadeOut(function(){
+      $(this).remove();
+    });
   });
   newLi.append(delButton);
 
